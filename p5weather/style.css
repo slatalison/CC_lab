@@ -1,24 +1,77 @@
-html, body {
-  overflow: hidden;
-  margin: 0;
-  padding: 0;
-}
+html,
 body {
-  background-color:#FFF;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
-.selectcity{
-  float:left;
-  color:#FFF;
-  width:400px;
-  height:680px; 
-  background-color:#16191e;
-  padding-left:20px;
+body {
+    background-color: #FFF;
 }
 
-h1{
-  float:left;
-  color:#000;
-  font-weight:bold;
-  font-size:12px;
+.selectcity {
+    float: left;
+    color: #FFF;
+    width: 100vw;
+    height: 680px;
+    background-color: #16191e;
+    padding-left: 20px;
+}
+
+h1 {
+    float: left;
+    color: #000;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+
+/* #search{
+  padding-left: 50px;
+} */
+
+#webgazerFaceFeedbackBox {
+    display: block;
+    position: fixed;
+    right: 0px;
+    border: medium solid green;
+    top: 40.8px;
+    right: 80.8px;
+    width: 158.4px;
+    height: 158.4px;
+}
+
+#webgazerVideoFeed{
+    display: block;  
+    position: fixed;
+    right:0;
+    top: 0px; 
+    right: 0px; 
+    width: 320px; 
+    height: 240px;
+}
+
+#webgazerVideoCanvas{
+    display: none;
+    position: fixed;
+    right:0px; 
+    width: 640px;
+    height: 480px;
+}
+
+#webgazerFaceOverlay{
+display: block; 
+position: fixed; 
+top: 0px; 
+right: 0px; 
+width: 320px; 
+height: 240px;
+width: 640px;
+height: 480px;
+}
+
+#renderCanvas{
+    display:none;
+    position:fixed;
+    right:0;
 }
