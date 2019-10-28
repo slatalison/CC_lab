@@ -1,10 +1,4 @@
-/**
- *  Re-group the FFT into more meaningful values by 
- *  splitting into one-third-octave bands,
- *  and by smoothing each point with its neighbors.
- *  
- *  Plot over time.
- */
+//--------------------------- unknown pleasure--------------------------------
 
 var source, fft;
 
@@ -14,40 +8,41 @@ var cnv;
 var speed = 1;
 
 function setup() {
-  
-  cnv = createCanvas(windowWidth, windowHeight);
-
-
-  //drop audio
-  // canvas.drop(gotFile); // listen for file drop onto canvas
-  //drop audio end
-
   background(220, 220, 220);
+
+  cnv = createCanvas(windowWidth, windowHeight);
   noFill();
   stroke(0,100);
-
-  // function gotFile(file) {
-  //   // If it's an image file
-  //   if (file.type === 'audio') {
-  //     // source = new p5.AudioIn();
-  //     source = new p5.soundFile(file,data);
-  //     source.start();
-  //   } else {
-  //     console.log('Not an audio file!');
-  //   }
-  // }
-  
-  source = new p5.AudioIn();
+  source = new p5.soundFile();
   source.start();
-
 
   fft = new p5.FFT(0.9, 1024);
   fft.setInput(source);
-
-
-
-  
 }
+
+
+canvas.drop(gotFile);
+
+function gotFile(file) {
+  if((!soundFile) && (file.type == "audio")) { // if don't already have sound && is audio
+		background(220, 220, 220);
+    soundFile = new p5.SoundFile(file.data); // create soundFile from dropped audio file
+    fft = new p5.FFT(0.4,1024); // (smoothing, bins)
+    soundFile.amp(0.7); 
+    canvas.mouseClicked(togglePlay); // listen for mouse click to play sound
+  }
+}
+
+function togglePlay() {
+  if (soundFile.isPlaying()) {
+    soundFile.pause();
+  } else {
+    soundFile.loop();
+  }
+}
+
+
+
 
 function draw() {
   var h = height/divisions;
@@ -168,3 +163,5 @@ function smoothPoint(spectrum, index, numberOfNeighbors) {
 
   return val;
 }
+
+
